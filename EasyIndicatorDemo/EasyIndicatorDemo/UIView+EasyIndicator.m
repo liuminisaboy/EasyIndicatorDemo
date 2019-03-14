@@ -42,7 +42,7 @@ const NSInteger indicatorTag = 999;
     CGFloat alpha = 0.0;
     
     UIColor* color = self.backgroundColor;
-    if (color == [UIColor clearColor]) {
+    if (!color || color == [UIColor clearColor]) {
         color = [UIColor whiteColor];
     }
     
