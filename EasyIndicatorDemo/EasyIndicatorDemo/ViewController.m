@@ -47,7 +47,7 @@
     btnx.frame = CGRectMake(30, easyy, CGRectGetWidth(self.view.frame)-60, 50);
     btnx.backgroundColor = [UIColor greenColor];
     btnx.layer.cornerRadius = 8;
-    [btnx setTitle:@"点击" forState:UIControlStateNormal];
+    [btnx setTitle:@"Easy Indicator" forState:UIControlStateNormal];
     [btnx addTarget:self action:@selector(btnOfBtnx:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btnx];
     
@@ -60,6 +60,18 @@
     switchx.frame = CGRectMake(CGRectGetWidth(self.view.frame)-switchx.bounds.size.width-30, easyy, switchx.bounds.size.width, switchx.bounds.size.height);
     [switchx addTarget:self action:@selector(changeSwitchx:) forControlEvents:UIControlEventValueChanged];
     
+    //mark
+    UILabel* msgx = [[UILabel alloc] initWithFrame:CGRectMake(30, easyy, 0, 0)];
+    msgx.userInteractionEnabled = YES;
+    msgx.textColor = [UIColor lightGrayColor];
+    msgx.text = @"点击所有控件";
+    msgx.font = [UIFont systemFontOfSize:12];
+    [self.view addSubview:msgx];
+    [msgx sizeToFit];
+    
+    UITapGestureRecognizer* tapMsgx = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMsgx:)];
+    [msgx addGestureRecognizer:tapMsgx];
+    
     [self updateEasyy:switchx];
 }
 
@@ -70,7 +82,7 @@
         return;
     }
     easyy += CGRectGetHeight(view.bounds);
-    easyy += 50;
+    easyy += 20;
 }
 
 - (void)viewDidLoad {
@@ -97,6 +109,11 @@
 - (void)changeSwitchx:(UISwitch*)sender
 {
     [self indicatorTestOnView:sender];
+}
+- (void)tapMsgx:(UITapGestureRecognizer*)sender
+{
+    UIView* tmp = sender.view;
+    [self indicatorTestOnView:tmp];
 }
 
 - (void)indicatorTestOnView:(UIView*)view
