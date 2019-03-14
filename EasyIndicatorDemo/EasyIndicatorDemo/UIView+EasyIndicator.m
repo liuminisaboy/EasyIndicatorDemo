@@ -12,21 +12,21 @@ const NSInteger indicatorTag = 999;
 
 @implementation UIView (EasyIndicator)
 
-- (void)showIndicator {
+- (void)showIndicator
+{
     [self stopIndicator];
     self.userInteractionEnabled = NO;
             
     UIActivityIndicatorView* av = [[UIActivityIndicatorView alloc] initWithFrame:self.bounds];
     av.tag = indicatorTag;
     av.color = [self autoIndicatorColor];
-
     [self addSubview:av];
     
     [av startAnimating];
 }
 
-- (void)stopIndicator {
-    
+- (void)stopIndicator
+{
     self.userInteractionEnabled = YES;
     
     UIActivityIndicatorView* av = [self viewWithTag:indicatorTag];
@@ -34,18 +34,18 @@ const NSInteger indicatorTag = 999;
     [av removeFromSuperview];
 }
 
-- (UIColor*)autoIndicatorColor {
-    
+- (UIColor*)autoIndicatorColor
+{
     CGFloat rr = 0.0;
     CGFloat gg = 0.0;
     CGFloat bb = 0.0;
     CGFloat alpha = 0.0;
     
     UIColor* color = self.backgroundColor;
-    if (!color || color == [UIColor clearColor]) {
+    if (!color || color == [UIColor clearColor])
+    {
         color = [UIColor whiteColor];
     }
-    
     [color getRed:&rr green:&gg blue:&bb alpha:&alpha];
         
     //取反色 eg: black -> white 
