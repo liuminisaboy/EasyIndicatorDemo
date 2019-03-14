@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)showIndicator;
 - (void)stopIndicator;
 
-
 @end
 
 NS_ASSUME_NONNULL_END
